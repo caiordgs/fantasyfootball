@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+/* Reset Básico e Fontes */
+html, body, [class*="css"]  {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Ocultar elementos nativos do Streamlit que parecem 'baratos' */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Customização do Fundo Principal e Sidebar */
+.stApp {
+    background: radial-gradient(circle at 10% 20%, rgb(15, 23, 42) 0%, rgb(8, 14, 23) 90%);
+}
+
+[data-testid="stSidebar"] {
+    background-color: rgba(15, 23, 42, 0.4) !important;
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Estilo de Cartões de Vidro (Glassmorphism) para Containers e Métricas */
+div[data-testid="stMetric"] {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 210, 255, 0.2);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: #94a3b8 !important;
+    font-weight: 600;
+}
+
+div[data-testid="stMetricValue"], 
+div[data-testid="stMetricValue"] > div,
+div[data-testid="stMetricValue"] > span {
+    color: #f8fafc !important;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    font-size: 1.5rem !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.3 !important;
+}
+
+/* Tipografia de Headers */
+h1 {
+    background: -webkit-linear-gradient(45deg, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800 !important;
+}
+
+h2, h3 {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+}
+
+/* Botões Premium */
+div.stButton > button {
+    background: linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%);
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+div.stButton > button:hover {
+    box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
+    transform: scale(1.02);
+}
+
+/* Customização de Tabela e Dataframes */
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Caixas de Aviso / Alertas */
+.stAlert {
+    border-radius: 8px;
+    border: none !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+}

@@ -1,0 +1,316 @@
+Rank,Player (Bye),POS,AVG,Real-Time
+1,Bijan Robinson   ATL (11),RB1,1.0,2  -1
+2,Ja'Marr Chase   CIN (6),WR1,2.0,3  -1
+3,Jahmyr Gibbs   DET (6),RB2,3.0,1  +2
+4,Puka Nacua   LAR (11),WR2,4.0,4
+5,Jaxon Smith-Njigba   SEA (11),WR3,5.0,7  -2
+6,Josh Allen   BUF (7),QB1,6.0,23  -17
+7,Amon-Ra St. Brown   DET (6),WR4,7.0,9  -2
+8,Malik Nabers   NYG (8),WR5,8.0,37  -29
+9,Drake Maye   NE (11),QB2,9.0,51  -42
+10,Brock Bowers   LV (13),TE1,10.0,20  -10
+11,Joe Burrow   CIN (6),QB3,11.0,54  -43
+12,Trey McBride   ARI (14),TE2,12.0,26  -14
+13,Justin Jefferson   MIN (6),WR6,13.0,12  +1
+14,Ashton Jeanty   LV (13),RB3,14.0,10  +4
+15,Jayden Daniels   WAS (7),QB4,15.0,59  -44
+16,Jeremiyah Love   ARI (14),RB4,16.0,25  -9
+17,Lamar Jackson   BAL (13),QB5,17.0,39  -22
+18,CeeDee Lamb   DAL (14),WR7,18.0,11  +7
+19,De'Von Achane   MIA (6),RB5,19.0,14  +5
+20,Omarion Hampton   LAC (7),RB6,20.0,15  +5
+21,Drake London   ATL (11),WR8,21.0,17  +4
+22,Jonathan Taylor   IND (13),RB7,22.0,6  +16
+23,Tetairoa McMillan   CAR (5),WR9,23.0,40  -17
+24,Colston Loveland   CHI (10),TE3,24.0,41  -17
+25,James Cook III   BUF (7),RB8,25.0,8  +17
+26,Jalen Hurts   PHI (10),QB6,26.0,63  -37
+27,George Pickens   DAL (14),WR10,27.0,24  +3
+28,Nico Collins   HOU (8),WR11,28.0,21  +7
+29,Chris Olave   NO (8),WR12,29.0,33  -4
+30,Emeka Egbuka   TB (10),WR13,30.0,42  -12
+31,Tyler Warren   IND (13),TE4,31.0,53  -22
+32,Garrett Wilson   NYJ (13),WR14,32.0,43  -11
+33,Chase Brown   CIN (6),RB9,33.0,16  +17
+34,TreVeyon Henderson   NE (11),RB10,34.0,55  -21
+35,Christian McCaffrey   SF (8),RB11,35.0,5  +30
+36,Ladd McConkey   LAC (7),WR15,36.0,44  -8
+37,Harold Fannin Jr.   CLE (11),TE5,37.0,69  -32
+38,Kenneth Walker III   KC (5),RB12,38.0,19  +19
+39,Breece Hall   NYJ (13),RB13,39.0,31  +8
+40,Carnell Tate   TEN (9),WR16,40.0,71  -31
+41,Bucky Irving   TB (10),RB14,41.0,45  -4
+42,Rashee Rice   KC (5),WR17,42.0,30  +12
+43,Quinshon Judkins   CLE (11),RB15,43.0,48  -5
+44,Patrick Mahomes II   KC (5),QB7,44.0,99  -55
+45,Luther Burden III   CHI (10),WR18,45.0,56  -11
+46,Rome Odunze   CHI (10),WR19,46.0,65  -19
+47,Saquon Barkley   PHI (10),RB16,47.0,13  +34
+48,Jordyn Tyson   NO (8),WR20,48.0,84  -36
+49,Tucker Kraft   GB (11),TE6,49.0,66  -17
+50,Marvin Harrison Jr.   ARI (14),WR21,50.0,73  -23
+51,A.J. Brown   NE (11),WR22,51.0,22  +29
+52,Caleb Williams   CHI (10),QB8,52.0,79  -27
+53,Justin Herbert   LAC (7),QB9,53.0,81  -28
+54,Tee Higgins   CIN (6),WR23,54.0,35  +19
+55,Jaxson Dart   NYG (8),QB10,55.0,86  -31
+56,Brian Thomas Jr.   JAC (7),WR24,56.0,76  -20
+57,Kyren Williams   LAR (11),RB17,57.0,27  +30
+58,Zay Flowers   BAL (13),WR25,58.0,38  +20
+59,Makai Lemon   PHI (10),WR26,59.0,95  -36
+60,Bo Nix   DEN (10),QB11,60.0,108  -48
+61,Sam LaPorta   DET (6),TE7,61.0,70  -9
+62,Jameson Williams   DET (6),WR27,62.0,62
+63,Javonte Williams   DAL (14),RB18,63.0,29  +34
+64,Josh Jacobs   GB (11),RB19,64.0,28  +36
+65,Trevor Lawrence   JAC (7),QB12,65.0,89  -24
+66,Travis Etienne Jr.   NO (8),RB20,66.0,34  +32
+67,DeVonta Smith   PHI (10),WR28,67.0,32  +35
+68,Cam Skattebo   NYG (8),RB21,68.0,36  +32
+69,Kyle Pitts Sr.   ATL (11),TE8,69.0,72  -3
+70,Jaylen Waddle   DEN (10),WR29,70.0,46  +24
+71,Jadarian Price   SEA (11),RB22,71.0,61  +10
+72,RJ Harvey   DEN (10),RB23,72.0,83  -11
+73,Derrick Henry   BAL (13),RB24,73.0,18  +55
+74,Oronde Gadsden II   LAC (7),TE9,74.0,144  -70
+75,Brock Purdy   SF (8),QB13,75.0,104  -29
+76,KC Concepcion   CLE (11),WR30,76.0,132  -56
+77,Alec Pierce   IND (13),WR31,77.0,77
+78,Michael Wilson   ARI (14),WR32,78.0,94  -16
+79,Omar Cooper Jr.   NYJ (13),WR33,79.0,173  -94
+80,Bhayshul Tuten   JAC (7),RB25,80.0,57  +23
+81,Jordan Addison   MIN (6),WR34,81.0,116  -35
+82,Christian Watson   GB (11),WR35,82.0,64  +18
+83,Wan'Dale Robinson   TEN (9),WR36,83.0,122  -39
+84,D'Andre Swift   CHI (10),RB26,84.0,47  +37
+85,Dalton Kincaid   BUF (7),TE10,85.0,105  -20
+86,Kenyon Sadiq   NYJ (13),TE11,87.0,166  -80
+87,Kyle Monangai   CHI (10),RB27,88.0,87
+88,DJ Moore   BUF (7),WR37,89.0,58  +30
+89,Davante Adams   LAR (11),WR38,90.0,50  +39
+90,Terry McLaurin   WAS (7),WR39,91.0,52  +38
+91,Jake Ferguson   DAL (14),TE12,92.0,114  -23
+92,David Montgomery   HOU (8),RB28,93.0,49  +43
+93,Brenton Strange   JAC (7),TE13,94.0,136  -43
+94,Baker Mayfield   TB (10),QB14,95.0,145  -51
+95,Parker Washington   JAC (7),WR40,96.0,90  +5
+96,Travis Hunter   JAC (7),WR41,97.0,185  -89
+97,Denzel Boston   CLE (11),WR42,98.0,178  -81
+98,Fernando Mendoza   LV (13),QB15,99.0,238  -140
+99,George Kittle   SF (8),TE14,100.0,93  +6
+100,Zach Charbonnet   SEA (11),RB29,101.0,131  -31
+101,Jayden Higgins   HOU (8),WR43,102.0,139  -38
+102,DK Metcalf   PIT (9),WR44,103.0,82  +20
+103,Jaylen Warren   PIT (9),RB30,104.0,67  +36
+104,Michael Pittman Jr.   PIT (9),WR45,105.0,110  -6
+105,Mike Evans   SF (8),WR46,106.0,60  +45
+106,Chuba Hubbard   CAR (5),RB31,107.0,68  +38
+107,Tyler Allgeier   ARI (14),RB32,108.0,133  -26
+108,Quentin Johnston   LAC (7),WR47,109.0,97  +11
+109,Courtland Sutton   DEN (10),WR48,110.0,85  +24
+110,Matthew Golden   GB (11),WR49,111.0,130  -20
+111,Blake Corum   LAR (11),RB33,112.0,91  +20
+112,Dak Prescott   DAL (14),QB16,113.0,78  +34
+113,Isaiah Likely   NYG (8),TE15,114.0,102  +11
+114,Jakobi Meyers   JAC (7),WR50,115.0,113  +1
+115,Xavier Worthy   KC (5),WR51,116.0,123  -8
+116,Rico Dowdle   PIT (9),RB34,117.0,74  +42
+117,Eli Stowers   PHI (10),TE16,118.0,216  -99
+118,Chris Bell   MIA (6),WR52,119.0,270  -152
+119,Romeo Doubs   NE (11),WR53,120.0,129  -10
+120,Rhamondre Stevenson   NE (11),RB35,121.0,80  +40
+121,Germie Bernard   PIT (9),WR54,122.0,266  -145
+122,C.J. Stroud   HOU (8),QB17,123.0,194  -72
+123,Jayden Reed   GB (11),WR55,124.0,117  +6
+124,Mason Taylor   NYJ (13),TE17,125.0,—
+125,Jalen Coker   CAR (5),WR56,126.0,150  -25
+126,Josh Downs   IND (13),WR57,127.0,106  +20
+127,Jonah Coleman   DEN (10),RB36,128.0,165  -38
+128,Chris Brazzell II   CAR (5),WR58,129.0,—
+129,Chris Godwin Jr.   TB (10),WR59,130.0,92  +37
+130,Juwan Johnson   NO (8),TE18,131.0,157  -27
+131,Woody Marks   HOU (8),RB37,132.0,137  -6
+132,J.K. Dobbins   DEN (10),RB38,133.0,88  +44
+133,AJ Barner   SEA (11),TE19,134.0,200  -67
+134,Khalil Shakir   BUF (7),WR60,135.0,138  -4
+135,Kenny Gainwell   TB (10),RB39,136.0,96  +39
+136,Jacory Croskey-Merritt   WAS (7),RB40,137.0,109  +27
+137,Jalen McMillan   TB (10),WR61,138.0,164  -27
+138,Elijah Sarratt   BAL (13),WR62,139.0,260  -122
+139,Mark Andrews   BAL (13),TE20,140.0,118  +21
+140,Jonathon Brooks   CAR (5),RB41,141.0,98  +42
+141,Brandon Aiyuk   SF (8),WR63,142.0,220  -79
+142,Trey Benson   ARI (14),RB42,143.0,241  -99
+143,Zachariah Branch   ATL (11),WR64,144.0,224  -81
+144,Jauan Jennings   MIN (6),WR65,145.0,168  -24
+145,Dallas Goedert   PHI (10),TE21,146.0,111  +34
+146,T.J. Hockenson   MIN (6),TE22,147.0,169  -23
+147,Terrance Ferguson   LAR (11),TE23,148.0,229  -82
+148,Emmett Johnson   KC (5),RB43,149.0,190  -42
+149,Tre' Harris   LAC (7),WR66,150.0,206  -57
+150,Gunnar Helm   TEN (9),TE24,151.0,232  -82
+151,Michael Penix Jr.   ATL (11),QB18,152.0,—
+152,Tony Pollard   TEN (9),RB44,153.0,75  +77
+153,Jordan Mason   MIN (6),RB45,154.0,107  +46
+154,Travis Kelce   KC (5),TE25,155.0,101  +53
+155,Rashid Shaheed   SEA (11),WR67,156.0,134  +21
+156,Jordan Love   GB (11),QB19,157.0,159  -3
+157,Jared Goff   DET (6),QB20,158.0,124  +33
+158,Pat Bryant   DEN (10),WR68,159.0,251  -93
+159,Troy Franklin   DEN (10),WR69,160.0,264  -105
+160,Daniel Jones   IND (13),QB21,161.0,223  -63
+161,Matthew Stafford   LAR (11),QB22,162.0,120  +41
+162,Theo Johnson   NYG (8),TE26,163.0,—
+163,Dalton Schultz   HOU (8),TE27,164.0,191  -28
+164,Hunter Henry   NE (11),TE28,165.0,161  +3
+165,Tyrone Tracy Jr.   NYG (8),RB46,166.0,128  +37
+166,Rachaad White   WAS (7),RB47,167.0,100  +66
+167,Kayshon Boutte   NE (11),WR70,168.0,212  -45
+168,Chig Okonkwo   WAS (7),TE29,169.0,153  +15
+169,Braelon Allen   NYJ (13),RB48,170.0,180  -11
+170,Nicholas Singleton   TEN (9),RB49,171.0,196  -26
+171,Chimere Dike   TEN (9),WR71,172.0,—
+172,Ty Simpson   LAR (11),QB23,173.0,—
+173,David Njoku   LAC (7),TE30,174.0,202  -29
+174,Antonio Williams   WAS (7),WR72,175.0,192  -18
+175,Jerry Jeudy   CLE (11),WR73,176.0,172  +3
+176,Isaac TeSlaa   DET (6),WR74,177.0,218  -42
+177,Sam Darnold   SEA (11),QB24,178.0,174  +3
+178,Tyjae Spears   TEN (9),RB50,179.0,146  +32
+179,Dylan Sampson   CLE (11),RB51,180.0,162  +17
+180,Malachi Fields   NYG (8),WR75,181.0,199  -19
+181,Elic Ayomanor   TEN (9),WR76,182.0,250  -69
+182,Deebo Samuel Sr.   SF (8),WR77,183.0,156  +26
+183,De'Zhaun Stribling   SF (8),WR78,184.0,213  -30
+184,Adonai Mitchell   NYJ (13),WR79,185.0,205  -21
+185,Tyreek Hill,WR80,186.0,171  +14
+186,Kaleb Johnson   PIT (9),RB52,187.0,—
+187,Tank Bigsby   PHI (10),RB53,188.0,147  +40
+188,Ted Hurst III   TB (10),WR81,189.0,267  -79
+189,Stefon Diggs,WR82,190.0,148  +41
+190,Isiah Pacheco   DET (6),RB54,191.0,141  +49
+191,Jake Tonges   SF (8),TE31,192.0,259  -68
+192,Jaylin Noel   HOU (8),WR83,193.0,—
+193,Pat Freiermuth   PIT (9),TE32,194.0,227  -34
+194,Ja'Kobi Lane   BAL (13),WR84,195.0,254  -60
+195,Aaron Jones Sr.   MIN (6),RB55,196.0,112  +83
+196,Kimani Vidal   LAC (7),RB56,197.0,211  -15
+197,Bryce Young   CAR (5),QB25,198.0,219  -22
+198,Cade Otton   TB (10),TE33,199.0,228  -30
+199,Tank Dell   HOU (8),WR85,200.0,221  -22
+200,Kyle Williams   NE (11),WR86,201.0,—
+201,James Conner   ARI (14),RB57,202.0,214  -13
+202,Skyler Bell   BUF (7),WR87,203.0,—
+203,Emanuel Wilson   SEA (11),RB58,204.0,210  -7
+204,Keaton Mitchell   LAC (7),RB59,205.0,149  +55
+205,Brian Robinson Jr.   ATL (11),RB60,206.0,154  +51
+206,Keon Coleman   BUF (7),WR88,207.0,256  -50
+207,Alvin Kamara   NO (8),RB61,208.0,142  +65
+208,Elijah Arroyo   SEA (11),TE34,209.0,—
+209,Jalen Nailor   LV (13),WR89,210.0,170  +39
+210,Devin Neal   NO (8),RB62,211.0,—
+211,Chris Rodriguez Jr.   JAC (7),RB63,212.0,135  +76
+212,Mike Washington Jr.   LV (13),RB64,213.0,184  +28
+213,Jalen Milroe   SEA (11),QB26,214.0,—
+214,Jack Bech   LV (13),WR90,215.0,—
+215,Brenen Thompson   LAC (7),WR91,216.0,—
+216,Ollie Gordon II   MIA (6),RB65,217.0,—
+217,Sean Tucker   TB (10),RB66,218.0,204  +13
+218,Michael Mayer   LV (13),TE35,219.0,—
+219,Max Klare   LAR (11),TE36,220.0,—
+220,Adam Randall   BAL (13),RB67,221.0,—
+221,Colby Parkinson   LAR (11),TE37,222.0,249  -28
+222,Tre Tucker   LV (13),WR92,223.0,203  +19
+223,Malik Washington   MIA (6),WR93,224.0,187  +36
+224,Aaron Rodgers   PIT (9),QB27,225.0,248  -24
+225,CJ Daniels   LAR (11),WR94,226.0,—
+226,Darnell Mooney   NYG (8),WR95,227.0,247  -21
+227,Tory Horton   SEA (11),WR96,228.0,274  -47
+228,Michael Trigg   DAL (14),TE38,229.0,—
+229,Jaydon Blue   DAL (14),RB68,230.0,217  +12
+230,Jaylen Wright   MIA (6),RB69,231.0,234  -4
+231,Ray Davis   BUF (7),RB70,232.0,179  +52
+232,Kevin Coleman Jr.   MIA (6),WR97,233.0,—
+233,Isaiah Bond   CLE (11),WR98,234.0,—
+234,Kyler Murray   MIN (6),QB28,235.0,125  +109
+235,Kaytron Allen   WAS (7),RB71,236.0,198  +37
+236,Tez Johnson   TB (10),WR99,237.0,—
+237,Brashard Smith   KC (5),RB72,238.0,—
+238,DJ Giddens   IND (13),RB73,239.0,—
+239,Evan Engram   DEN (10),TE39,240.0,—
+240,Cam Ward   TEN (9),QB29,241.0,209  +31
+241,Jordan James   SF (8),RB74,242.0,197  +44
+242,Oscar Delp   NO (8),TE40,244.0,—
+243,J.J. McCarthy   MIN (6),QB30,245.0,—
+244,Kirk Cousins   LV (13),QB31,246.0,—
+245,Devaughn Vele   NO (8),WR100,247.0,—
+246,Ja'Tavion Sanders   CAR (5),TE41,248.0,—
+247,Najee Harris   LAC (7),RB75,249.0,—
+248,Xavier Legette   CAR (5),WR101,250.0,—
+249,Will Howard   PIT (9),QB32,251.0,—
+250,Ryan Flournoy   DAL (14),WR102,252.0,237  +13
+251,Marvin Mims Jr.   DEN (10),WR103,253.0,—
+252,Calvin Ridley   TEN (9),WR104,254.0,183  +69
+253,Tyler Shough   NO (8),QB33,255.0,151  +102
+254,Ben Sinnott   WAS (7),TE42,256.0,—
+255,Jam Miller   NE (11),RB76,257.0,—
+256,Christian Kirk   SF (8),WR105,258.0,182  +74
+257,Demond Claiborne   MIN (6),RB77,259.0,233  +24
+258,LeQuint Allen Jr.   JAC (7),RB78,260.0,—
+259,Dontayvion Wicks   PHI (10),WR106,261.0,263  -4
+260,Hollywood Brown   PHI (10),WR107,262.0,—
+261,Rashod Bateman   BAL (13),WR108,263.0,235  +26
+262,J'Mari Taylor   JAC (7),RB79,264.0,—
+263,Dont'e Thornton Jr.   LV (13),WR109,265.0,—
+264,Deion Burks   IND (13),WR110,266.0,—
+265,Joe Mixon,RB80,267.0,—
+266,Cole Kmet   CHI (10),TE43,268.0,—
+267,Carson Beck   ARI (14),QB34,269.0,—
+268,Kaelon Black   SF (8),RB81,270.0,222  +46
+269,Quinn Ewers   MIA (6),QB35,271.0,—
+270,Isaiah Davis   NYJ (13),RB82,272.0,—
+271,Mike Gesicki   CIN (6),TE44,273.0,—
+272,Noah Gray   KC (5),TE45,274.0,—
+273,Deshaun Watson   CLE (11),QB36,275.0,—
+274,Cedric Tillman   CLE (11),WR111,276.0,—
+275,Tyquan Thornton   KC (5),WR112,277.0,—
+276,Kendre Miller   NO (8),RB83,278.0,—
+277,Shedeur Sanders   CLE (11),QB37,279.0,253  +24
+278,Jahan Dotson   ATL (11),WR113,280.0,—
+279,Jalen Royals   KC (5),WR114,281.0,—
+280,Eli Heidenreich   PIT (9),RB84,282.0,—
+281,Darnell Washington   PIT (9),TE46,283.0,—
+282,Cooper Kupp   SEA (11),WR115,284.0,268  +14
+283,Jack Endries   CIN (6),TE47,285.0,—
+284,Roman Hemby   LV (13),RB85,286.0,—
+285,Keenan Allen   LAC (7),WR116,287.0,—
+286,Bryce Lance   NO (8),WR117,288.0,—
+287,DeMario Douglas   NE (11),WR118,289.0,—
+288,Noah Thomas   CIN (6),WR119,290.0,—
+289,Trevor Etienne   CAR (5),RB86,291.0,—
+290,Dane Key   DEN (10),WR120,292.0,—
+291,Marcus Mariota   WAS (7),QB38,293.0,—
+292,Riley Leonard   IND (13),QB39,294.0,—
+293,Trebor Pena   JAC (7),WR121,295.0,—
+294,Aaron Anderson,WR122,296.0,—
+295,Eric McAlister,WR123,297.0,—
+296,Garrett Nussmeier   KC (5),QB40,298.0,—
+297,Anthony Richardson Sr.   IND (13),QB41,299.0,—
+298,Justin Joly   DEN (10),TE48,300.0,—
+299,Drew Allar   PIT (9),QB42,301.0,—
+300,Josh Cameron   JAC (7),WR124,302.0,—
+301,Eric Rivers Jr.   TB (10),WR125,303.0,—
+302,Lake McRee   PIT (9),TE49,304.0,—
+303,Bauer Sharp   TB (10),TE50,305.0,—
+304,Davon Booth   CLE (11),RB87,306.0,—
+305,Cade Klubnik   NYJ (13),QB43,307.0,—
+306,Nate Boerkircher   JAC (7),TE51,308.0,—
+307,Sam Roush   CHI (10),TE52,309.0,—
+308,Lance Mason   SEA (11),TE53,310.0,—
+309,Jameis Winston   NYG (8),QB44,311.0,—
+310,Joe Milton III   DAL (14),QB45,313.0,—
+311,Marlin Klein   HOU (8),TE54,315.0,—
+312,Emmanuel Henderson Jr.   SEA (11),WR126,316.0,—
+313,Tyson Bagent   CHI (10),QB46,317.0,—
+314,DT Sheffield   NYJ (13),WR127,318.0,—
+315,DJ Rogers   DAL (14),TE55,319.0,—

@@ -1,0 +1,13 @@
+.venv/
+.idea/
+__pycache__/
+*.pyc
+.agents/
+.DS_Store
+
+# Ignore huge raw files (will crash github limits)
+dataset_drafts_raw.csv
+dataset_features.csv
+
+# Ignore local generated cache
+sleeper_players_cache.json
