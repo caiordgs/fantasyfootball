@@ -467,6 +467,18 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
             else:
                 risco_calculado = risco_base_pos
 
+            # --- FANTASY POINTS LEAGUE WINNER NARRATIVES ---
+            if pos == 'RB':
+                n_clean = clean_n.lower()
+                if n_clean in ["chase brown", "ashton jeanty", "omarion hampton", "kenneth walker", "cam skattebo"]:
+                    nome_jogador = f"🏆 {nome_jogador}"
+                    risco_calculado = max(0, risco_calculado - 30)
+                elif n_clean in ["devon achane", "de'von achane", "saquon barkley"]:
+                    nome_jogador = f"🚨 {nome_jogador}"
+                    risco_calculado = min(99, risco_calculado + 40)
+                elif n_clean in ["breece hall"]:
+                    nome_jogador = f"⚠️ {nome_jogador}"
+
             base_pts = baseline_points_map.get(pos, 0.0)
             vorp_bruto = pts_ajustado - base_pts
 
@@ -526,6 +538,18 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
             
             diferenca_adp = current_pick - adp_jogador
             risco_calculado = threat_pct.get(pos, 0)
+            
+            # --- FANTASY POINTS LEAGUE WINNER NARRATIVES ---
+            if pos == 'RB':
+                n_clean = clean_n.lower()
+                if n_clean in ["chase brown", "ashton jeanty", "omarion hampton", "kenneth walker", "cam skattebo"]:
+                    nome_jogador = f"🏆 {nome_jogador}"
+                    risco_calculado = max(0, risco_calculado - 30)
+                elif n_clean in ["devon achane", "de'von achane", "saquon barkley"]:
+                    nome_jogador = f"🚨 {nome_jogador}"
+                    risco_calculado = min(99, risco_calculado + 40)
+                elif n_clean in ["breece hall"]:
+                    nome_jogador = f"⚠️ {nome_jogador}"
 
             base_pts = baseline_points_map.get(pos, 0.0)
             vorp_bruto = pts_ajustado - base_pts
