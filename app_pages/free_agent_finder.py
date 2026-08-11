@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from core.sleeper_api import get_user_data, get_user_leagues, get_league_rostered_players
+from core.sleeper_api import get_user_data, get_user_leagues, get_league_rostered_players, get_real_roster
 from core.data_utils import load_players_dict, load_adp_data
 
 st.title("Free Agent Finder")
@@ -62,6 +62,39 @@ if username:
                         st.info(f"O sistema cruzou o banco de dados e removeu **{len(rostered_ids)} jogadores** que já pertencem a algum time na liga '{selected_league}'.")
                         
                         st.dataframe(df_fa, hide_index=True, width='stretch')
+                        
+                        # --- ANALISANDO QUEM DROPAR DO SEU ELENCO ---
+                        st.markdown("---")
+                        st.subheader("✂️ Sugestão de Corte (Drop)")
+                        
+                        my_roster_pids = get_real_roster(league_id, user_id)
+                        if my_roster_pids:
+                            my_players = []
+                            for pid in my_roster_pids:
+                                p_info = players_dict.get(str(pid), {})
+                                p_name = p_info.get('full_name', '')
+                                
+                                p_rank = 999
+                                if p_name:
+                                    row = df_adp[df_adp[player_col].str.lower() == p_name.lower()]
+                                    if not row.empty:
+                                        p_rank = row.iloc[0][adp_col]
+                                        
+                                my_players.append({
+                                    'Nome': p_name,
+                                    'Pos': p_info.get('position', 'N/A'),
+                                    'Rank': p_rank
+                                })
+                            
+                            if my_players:
+                                my_players.sort(key=lambda x: x['Rank'], reverse=True)
+                                pior_jogador = my_players[0]
+                                rank_display = pior_jogador['Rank'] if pior_jogador['Rank'] != 999 else 'Fora dos Rankings'
+                                
+                                st.warning(f"💡 **Recomendação da IA:** Considere dropar o **{pior_jogador['Nome']} ({pior_jogador['Pos']})**.")
+                                st.write(f"**Justificativa Técnica:** Dentre todos os jogadores atualmente no seu elenco, o {pior_jogador['Nome']} é o que possui a pior avaliação no mercado global atual (Rank: {rank_display}). Substituí-lo pelo principal talento disponível nos Free Agents elevará o valor matemático do seu banco de reservas.")
+                        else:
+                            st.info("Não foi possível encontrar o seu elenco nesta liga. O draft já aconteceu?")
                     else:
                         st.error("Dicionário de jogadores ou dados de ADP indisponíveis.")
         else:

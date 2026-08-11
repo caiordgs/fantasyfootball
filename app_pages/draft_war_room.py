@@ -742,7 +742,7 @@ if username:
                     
                     cols_to_show = ['AI_Tier', 'Nota', 'Foto', 'Pos', 'Nome', 'Bye', 'ADP', 'Custo/Ben', '🔥 Breakout %', 'Risco', 'RZ_Vol', 'VORP']
                     
-                    st.dataframe(
+                    event = st.dataframe(
                         df_filtrado[cols_to_show]
                         .style.background_gradient(cmap='viridis', subset=['VORP'])
                         .background_gradient(cmap='RdYlGn', subset=['Custo/Ben']),
@@ -762,8 +762,33 @@ if username:
                                                                     format="%d"),
                             "VORP": st.column_config.NumberColumn("🔥 VORP", format="%.1f")
                         },
-                        width='stretch', hide_index=True, height=650
+                        width='stretch', hide_index=True, height=650,
+                        on_select="rerun", selection_mode="single"
                     )
+                    
+                    if hasattr(event, 'selection') and len(event.selection.rows) > 0:
+                        selected_idx = event.selection.rows[0]
+                        sp = df_filtrado.iloc[selected_idx]
+                        
+                        st.markdown("---")
+                        st.subheader(f"🔍 Auditoria Matemática: {sp['Nome']}")
+                        
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.info(f"**A Matemática do VORP (Value Over Replacement)**\n\n"
+                                    f"A projeção bruta deste jogador é **{sp['Pts']:.1f} pts**.\n"
+                                    f"A linha de base (o último titular projetado que sobrará na waiver para a posição {sp['Pos']}) projeta fazer **{(sp['Pts'] - sp['VORP_Bruto']):.1f} pts**.\n\n"
+                                    f"O *VORP Bruto* gerado por ele é a diferença: **{sp['VORP_Bruto']:.1f} pts extras**. \n\n"
+                                    f"Ajustando pela necessidade do seu elenco atual, o VORP final disparou para **{sp['VORP']:.1f}**.")
+                        with col2:
+                            if is_ml_mode:
+                                st.success(f"**A Mente da IA (Random Forest)**\n\n"
+                                           f"A IA previu **{sp['🔥 Breakout %']}%** de chance de Breakout por causa dos seguintes fatores injetados no modelo:\n\n"
+                                           f"- **O Gap de Preço (Custo/Ben)** dele é **{sp['Custo/Ben']:+.1f}**.\n"
+                                           f"- **O Risco Sistêmico** é de **{sp['Risco']}%**.\n"
+                                           f"- *Notas > 60% ganham um bônus multiplicativo na nota final da estrela.*")
+                            else:
+                                st.warning("Ative o Módulo Preditivo de IA no menu lateral para ler a justificativa do modelo preditivo.")
                 else:
                     st.warning("Calculando recomendações...")
 
