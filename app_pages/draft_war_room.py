@@ -469,7 +469,7 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
 
             # --- FANTASY POINTS LEAGUE WINNER NARRATIVES ---
             if pos == 'RB':
-                n_clean = clean_n.lower()
+                n_clean = match_name.lower()
                 if n_clean in ["chase brown", "ashton jeanty", "omarion hampton", "kenneth walker", "cam skattebo"]:
                     nome_jogador = f"🏆 {nome_jogador}"
                     risco_calculado = max(0, risco_calculado - 30)
