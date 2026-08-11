@@ -8,6 +8,7 @@ import time
 # Importa o nosso ETL e o Tradutor que criamos na Fase 5
 from core.data_loader import load_master_dataframe
 from core.draft_sync import get_sleeper_translator
+from core.ml_models import get_breakout_predictor_model, add_algorithmic_tiers
 
 # Configuração movida para app.py
 
@@ -129,7 +130,7 @@ def get_league_rostered_players(league_id):
 
 # NOVO MOTOR VORP (Agora com suporte a rostered_ids para Dynasty)
 def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, projections, scoring_settings=None,
-                    roster_positions=None, rostered_ids=None):
+                    roster_positions=None, rostered_ids=None, use_ml=False):
     if roster_positions is None: roster_positions = []
     if rostered_ids is None: rostered_ids = set()
 
@@ -577,6 +578,23 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
             todas_escolhas), picks_ate_minha_vez, threat_level, rosters_by_slot, draft_meta
 
     max_vorp = df['VORP'].max()
+    
+    # --- INJEÇÃO DA INTELIGÊNCIA ARTIFICIAL ---
+    if use_ml:
+        try:
+            df = add_algorithmic_tiers(df)
+            rf_model = get_breakout_predictor_model()
+            pos_map = {'QB': 0, 'RB': 1, 'TE': 2, 'WR': 3}
+            pos_encoded = df['Pos'].map(pos_map).fillna(3)
+            X_pred = pd.DataFrame({'Age': 25, 'Custo/Ben': df['Custo/Ben'], 'Risco': df['Risco'], 'Pos_Encoded': pos_encoded})
+            df['🔥 Breakout %'] = (rf_model.predict_proba(X_pred)[:, 1] * 100).round(1)
+        except Exception:
+            df['AI_Tier'] = df['Tier']
+            df['🔥 Breakout %'] = 0.0
+    else:
+        df['AI_Tier'] = df['Tier']
+        df['🔥 Breakout %'] = 0.0
+
     if max_vorp > 0:
         df['Nota_Calc'] = (df['VORP'] / max_vorp) * 10.0
     else:
@@ -584,6 +602,10 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
 
     df.loc[df['Custo/Ben'] < -12, 'Nota_Calc'] -= 2.0
     df.loc[(df['Custo/Ben'] > 5) & (df['Risco'] > 50), 'Nota_Calc'] += 1.5
+    
+    if use_ml:
+        df.loc[df['🔥 Breakout %'] > 60.0, 'Nota_Calc'] += 1.5
+        
     df['Nota_Calc'] = df['Nota_Calc'].clip(lower=1.0, upper=10.0).round(1)
 
     def format_nota(n):
@@ -650,6 +672,9 @@ if username:
         # NOVO: O Toggle Manual para limpar os Rookies Drafts
         is_dynasty_mode = st.sidebar.checkbox("👑 Ocultar jogadores já em elencos (Dynasty)", value=False,
                                               help="Remove da lista de recomendados qualquer veterano que já pertença a algum time nesta liga.")
+                                              
+        is_ml_mode = st.sidebar.checkbox("🤖 Ativar Módulo Preditivo de IA", value=False,
+                                         help="Usa K-Means para reorganizar as Tiers e Random Forest para prever a chance de Breakout.")
 
         st.sidebar.markdown("---")
         auto_refresh = st.sidebar.checkbox("🔴 Habilitar Live Sync")
@@ -674,14 +699,16 @@ if username:
 
             # Compara com segurança usando as variáveis já garantidas
             if (qtd_picks_atuais != st.session_state.total_picks) or (
-                    is_dynasty_mode != st.session_state.last_dynasty_toggle):
+                    is_dynasty_mode != st.session_state.last_dynasty_toggle) or (
+                    'last_ml_toggle' not in st.session_state or is_ml_mode != st.session_state.last_ml_toggle):
                 with st.spinner("Calculando Heurísticas e Lendo Elencos..."):
                     rostered_ids = get_league_rostered_players(league_id) if is_dynasty_mode and league_id else set()
 
                     df_rec, df_meu_time, counts, _, picks_dist, threat, adversarios, draft_meta = run_vorp_engine(
                         draft_id, user_id, players_dict, df_master, translator, projections, scoring_settings,
-                        roster_positions, rostered_ids)
+                        roster_positions, rostered_ids, is_ml_mode)
 
+                    st.session_state.last_ml_toggle = is_ml_mode
                     st.session_state.dados_cache = (df_rec, df_meu_time, counts, picks_dist, threat, adversarios,
                                                     draft_meta)
                     st.session_state.total_picks = qtd_picks_atuais
@@ -712,14 +739,15 @@ if username:
 
                 if not df_rec.empty:
                     df_filtrado = df_rec[df_rec['Pos'].isin(filtro_pos)].head(50)
+                    
+                    cols_to_show = ['AI_Tier', 'Nota', 'Foto', 'Pos', 'Nome', 'Bye', 'ADP', 'Custo/Ben', '🔥 Breakout %', 'Risco', 'RZ_Vol', 'VORP']
+                    
                     st.dataframe(
-                        df_filtrado[
-                            ['Tier', 'Nota', 'Foto', 'Pos', 'Nome', 'Bye', 'ADP', 'Custo/Ben', 'Risco', 'RZ_Vol',
-                             'VORP']]
+                        df_filtrado[cols_to_show]
                         .style.background_gradient(cmap='viridis', subset=['VORP'])
                         .background_gradient(cmap='RdYlGn', subset=['Custo/Ben']),
                         column_config={
-                            "Tier": st.column_config.NumberColumn("👑 Tier FP", format="%d"),
+                            "AI_Tier": st.column_config.NumberColumn("🧠 AI Tier", format="%d", help="Tier gerado via K-Means Clustering"),
                             "Nota": st.column_config.TextColumn("⭐ Rating", help="Nota Tática Integrada (1 a 10)"),
                             "Foto": st.column_config.ImageColumn("Player", help="Foto oficial"),
                             "Bye": st.column_config.TextColumn("📅 Folga"),
@@ -727,6 +755,7 @@ if username:
                             "Custo/Ben": st.column_config.NumberColumn("⚖️ Gap",
                                                                        help="+ Positivo = Steal / - Negativo = Reach",
                                                                        format="%+.1f"),
+                            "🔥 Breakout %": st.column_config.ProgressColumn("🔥 Breakout", format="%.1f%%", min_value=0.0, max_value=100.0, help="Predição via Random Forest"),
                             "Risco": st.column_config.ProgressColumn("🚨 Risco Real", format="%d%%", min_value=0,
                                                                      max_value=100),
                             "RZ_Vol": st.column_config.NumberColumn("🔴 RZ", help="Toques na Red Zone (Teto)",

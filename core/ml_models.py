@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
+from sklearn.cluster import KMeans
 
 @st.cache_resource(show_spinner=False)
 def get_dynasty_ml_model():
@@ -159,3 +160,79 @@ def evaluate_player_ml(player_name, model, le, df_adp, player_col, adp_col, pos_
     ai_modifier = ml_value / base_value if base_value > 0 else 1.0
     
     return ml_value, ai_modifier, real_age, real_pos
+
+@st.cache_resource(show_spinner=False)
+def get_breakout_predictor_model():
+    """
+    Treina um RandomForestClassifier para prever a probabilidade de Breakout (estourar a projeção).
+    """
+    np.random.seed(42)
+    n_samples = 3000
+    
+    # Gerando dados sintéticos
+    ages = np.random.uniform(20, 35, size=n_samples)
+    adp_diff = np.random.uniform(-30, 30, size=n_samples) # Custo/Ben (Diferença entre ECR e ADP)
+    risk = np.random.uniform(0, 100, size=n_samples)
+    pos_encoded = np.random.choice([0, 1, 2, 3], size=n_samples) # 0:QB, 1:RB, 2:TE, 3:WR
+    
+    # Regras de Breakout Sintéticas:
+    # 1. Jovens (<24 anos) têm maior propensão ao breakout
+    # 2. Custo/Ben positivo (Especialistas rankeando muito acima do ADP)
+    # 3. Risco muito alto prejudica
+    labels = []
+    for i in range(n_samples):
+        score = 0
+        if ages[i] <= 24: score += 40
+        if adp_diff[i] > 10: score += 35
+        elif adp_diff[i] > 0: score += 15
+        
+        if risk[i] < 30: score += 20
+        elif risk[i] > 70: score -= 30
+        
+        # RB jovens têm chance bônus
+        if pos_encoded[i] == 1 and ages[i] <= 23:
+            score += 20
+            
+        is_breakout = 1 if score > 65 else 0
+        labels.append(is_breakout)
+        
+    X_train = pd.DataFrame({'Age': ages, 'Custo/Ben': adp_diff, 'Risco': risk, 'Pos_Encoded': pos_encoded})
+    y_train = np.array(labels)
+    
+    model = RandomForestClassifier(n_estimators=100, max_depth=8, random_state=42)
+    model.fit(X_train, y_train)
+    return model
+
+def add_algorithmic_tiers(df_players):
+    """
+    Usa K-Means Clustering para criar Tiers Dinâmicas baseadas em VORP, Pts e Risco.
+    """
+    if df_players.empty or len(df_players) < 5:
+        return df_players
+        
+    df_copy = df_players.copy()
+    
+    features = ['VORP', 'Pts', 'Risco']
+    X = df_copy[features].fillna(0)
+    
+    # Normalização Simples (Min-Max)
+    X_norm = (X - X.min()) / (X.max() - X.min() + 1e-9)
+    
+    # Determinar número de clusters (Tiers) dinamicamente com base no tamanho do dataset
+    n_clusters = max(2, min(8, len(df_players) // 15))
+    
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+    clusters = kmeans.fit_predict(X_norm)
+    
+    # Agora precisamos ordernar os clusters para que Tier 1 seja os melhores jogadores.
+    # Vamos ranquear os clusters baseados na média de VORP do cluster.
+    df_copy['cluster_raw'] = clusters
+    cluster_means = df_copy.groupby('cluster_raw')['VORP'].mean().sort_values(ascending=False)
+    
+    # Mapeando: o cluster com maior VORP vira Tier 1, o segundo vira Tier 2, etc.
+    tier_mapping = {raw_id: new_tier for new_tier, raw_id in enumerate(cluster_means.index, 1)}
+    
+    df_copy['AI_Tier'] = df_copy['cluster_raw'].map(tier_mapping)
+    df_copy = df_copy.drop(columns=['cluster_raw'])
+    
+    return df_copy
