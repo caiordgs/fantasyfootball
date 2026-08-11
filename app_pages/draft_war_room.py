@@ -763,7 +763,7 @@ if username:
                             "VORP": st.column_config.NumberColumn("🔥 VORP", format="%.1f")
                         },
                         width='stretch', hide_index=True, height=650,
-                        on_select="rerun", selection_mode="single"
+                        on_select="rerun", selection_mode="single-row"
                     )
                     
                     if hasattr(event, 'selection') and len(event.selection.rows) > 0:
