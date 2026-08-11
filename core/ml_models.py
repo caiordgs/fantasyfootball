@@ -175,25 +175,32 @@ def get_breakout_predictor_model():
     risk = np.random.uniform(0, 100, size=n_samples)
     pos_encoded = np.random.choice([0, 1, 2, 3], size=n_samples) # 0:QB, 1:RB, 2:TE, 3:WR
     
-    # Regras de Breakout Sintéticas:
-    # 1. Jovens (<24 anos) têm maior propensão ao breakout
-    # 2. Custo/Ben positivo (Especialistas rankeando muito acima do ADP)
-    # 3. Risco muito alto prejudica
+    # Regras de Breakout Sintéticas (Ajustadas para maior fluidez):
+    # 1. Jovens (<26 anos) têm maior propensão ao breakout
+    # 2. Custo/Ben (Gap de ADP) - não precisa ser absurdo, estar empatado (+0) já é bom.
+    # 3. Risco tolerável
     labels = []
     for i in range(n_samples):
         score = 0
         if ages[i] <= 24: score += 40
-        if adp_diff[i] > 10: score += 35
-        elif adp_diff[i] > 0: score += 15
+        elif ages[i] <= 26: score += 20
         
-        if risk[i] < 30: score += 20
+        if adp_diff[i] > 5: score += 30
+        elif adp_diff[i] >= -5: score += 15
+        
+        if risk[i] < 40: score += 20
         elif risk[i] > 70: score -= 30
         
         # RB jovens têm chance bônus
-        if pos_encoded[i] == 1 and ages[i] <= 23:
+        if pos_encoded[i] == 1 and ages[i] <= 24:
             score += 20
             
-        is_breakout = 1 if score > 65 else 0
+        # WR jovens têm chance bônus moderada
+        if pos_encoded[i] == 3 and ages[i] <= 25:
+            score += 15
+            
+        # Diminui o cutoff para permitir um range maior de predições (probabilidades fluídas)
+        is_breakout = 1 if score > 45 else 0
         labels.append(is_breakout)
         
     X_train = pd.DataFrame({'Age': ages, 'Custo/Ben': adp_diff, 'Risco': risk, 'Pos_Encoded': pos_encoded})

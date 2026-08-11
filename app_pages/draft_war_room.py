@@ -569,7 +569,8 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
                 'ID': pid_str, 'Nome': nome_jogador, 'Pos': pos, 'Time': time_jogador,
                 'Bye': alerta_bye, 'ADP': adp_jogador, 'Custo/Ben': diferenca_adp,
                 'Risco': risco_calculado, 'Pts': pts_ajustado, 'RZ_Vol': 0.0,
-                'VORP_Bruto': vorp_bruto, 'VORP': vorp_pessoal, 'Tier': 99
+                'VORP_Bruto': vorp_bruto, 'VORP': vorp_pessoal, 'Tier': 99,
+                'Idade': p_info.get('age') if p_info.get('age') else 26
             })
 
     df = pd.DataFrame(available_players)
@@ -586,7 +587,7 @@ def run_vorp_engine(draft_id, my_user_id, players_dict, df_master, translator, p
             rf_model = get_breakout_predictor_model()
             pos_map = {'QB': 0, 'RB': 1, 'TE': 2, 'WR': 3}
             pos_encoded = df['Pos'].map(pos_map).fillna(3)
-            X_pred = pd.DataFrame({'Age': 25, 'Custo/Ben': df['Custo/Ben'], 'Risco': df['Risco'], 'Pos_Encoded': pos_encoded})
+            X_pred = pd.DataFrame({'Age': df['Idade'], 'Custo/Ben': df['Custo/Ben'], 'Risco': df['Risco'], 'Pos_Encoded': pos_encoded})
             df['🔥 Breakout %'] = (rf_model.predict_proba(X_pred)[:, 1] * 100).round(1)
         except Exception:
             df['AI_Tier'] = df['Tier']
